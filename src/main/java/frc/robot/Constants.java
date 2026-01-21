@@ -23,6 +23,15 @@ import edu.wpi.first.math.util.Units;
  */
 public final class Constants {
   public static final class DriveConstants {
+    // Motor controller IDs for drivetrain motors
+    public static final int LEFT_LEADER_ID = 1;
+    public static final int LEFT_FOLLOWER_ID = 2;
+    public static final int RIGHT_LEADER_ID = 3;
+    public static final int RIGHT_FOLLOWER_ID = 4;
+    public static final int BACK_LEFT_LEADER_ID = 5;
+    public static final int BACK_LEFT_FOLLOWER_ID = 6;
+    public static final int BACK_RIGHT_LEADER_ID = 7;
+    public static final int BACK_RIGHT_FOLLOWER_ID = 8;
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
     public static final double kMaxSpeedMetersPerSecond = 4.8;
@@ -99,4 +108,5 @@ public final class Constants {
   public static final class NeoMotorConstants {
     public static final double kFreeSpeedRpm = 5676;
   }
+
 }
