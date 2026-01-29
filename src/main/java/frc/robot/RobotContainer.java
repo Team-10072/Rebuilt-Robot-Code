@@ -14,7 +14,7 @@ import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.XboxController;
-//import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+//Ximport edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
@@ -24,20 +24,20 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
-//import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+//Ximport edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import java.util.List;
-//import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-//import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-//import edu.wpi.first.wpilibj2.command.button.Trigger;
-//import static frc.robot.Constants.OperatorConstants.*;
-//import frc.robot.commands.Drive;
-//import frc.robot.commands.Eject;
-//import frc.robot.commands.ExampleAuto;
-//import frc.robot.commands.Intake;
-//import frc.robot.commands.LaunchSequence;
-//import frc.robot.subsystems.CANDriveSubsystem;
-//import frc.robot.subsystems.CANFuelSubsystem;
+//Ximport edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+//Ximport edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+//Ximport edu.wpi.first.wpilibj2.command.button.Trigger;
+//Ximport static frc.robot.Constants.OperatorConstants.*;
+//Ximport frc.robot.commands.Drive;
+//Ximport frc.robot.commands.Eject;
+//Ximport frc.robot.commands.ExampleAuto;
+//Ximport frc.robot.commands.Intake;
+//Ximport frc.robot.commands.LaunchSequence;
+//Ximport frc.robot.subsystems.CANDriveSubsystem;
+//Ximport frc.robot.subsystems.CANFuelSubsystem;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -48,14 +48,14 @@ import java.util.List;
 public class RobotContainer {
   // The robot's subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
- //private final CANDriveSubsystem driveSubsystem = new CANDriveSubsystem();
-  //private final CANFuelSubsystem fuelSubsystem = new CANFuelSubsystem();
+ //Xprivate final CANDriveSubsystem driveSubsystem = new CANDriveSubsystem();
+  //Xprivate final CANFuelSubsystem fuelSubsystem = new CANFuelSubsystem();
 
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
-//private final CommandXboxController driverController = new CommandXboxController(DRIVER_CONTROLLER_PORT);
-//private final CommandXboxController operatorController = new CommandXboxController(OPERATOR_CONTROLLER_PORT);
-//private final SendableChooser<Command> autoChooser = new SendableChooser<>();
+//Xprivate final CommandXboxController driverController = new CommandXboxController(DRIVER_CONTROLLER_PORT);
+//Xprivate final CommandXboxController operatorController = new CommandXboxController(OPERATOR_CONTROLLER_PORT);
+//Xprivate final SendableChooser<Command> autoChooser = new SendableChooser<>();
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -95,22 +95,22 @@ public class RobotContainer {
             () -> m_robotDrive.zeroHeading(),
             m_robotDrive));
 // While the left bumper on operator controller is held, intake Fuel
-    //operatorController.leftBumper().whileTrue(new Intake(fuelSubsystem));
+    //XoperatorController.leftBumper().whileTrue(new Intake(fuelSubsystem));
     // While the right bumper on the operator controller is held, spin up for 1
     // second, then launch fuel. When the button is released, stop.
-    //operatorController.rightBumper().whileTrue(new LaunchSequence(fuelSubsystem));
+    //XoperatorController.rightBumper().whileTrue(new LaunchSequence(fuelSubsystem));
     // While the A button is held on the operator controller, eject fuel back out
     // the intake
-    //operatorController.a().whileTrue(new Eject(fuelSubsystem));
+    //XoperatorController.a().whileTrue(new Eject(fuelSubsystem));
 
     // Set the default command for the drive subsystem to the command provided by
     // factory with the values provided by the joystick axes on the driver
     // controller. The Y axis of the controller is inverted so that pushing the
     // stick away from you (a negative value) drives the robot forwards (a positive
     // value)
-    //driveSubsystem.setDefaultCommand(new Drive(driveSubsystem, driverController));
+    //XdriveSubsystem.setDefaultCommand(new Drive(driveSubsystem, driverController));
 
-    //fuelSubsystem.setDefaultCommand(fuelSubsystem.run(() -> fuelSubsystem.stop()));
+    //XfuelSubsystem.setDefaultCommand(fuelSubsystem.run(() -> fuelSubsystem.stop()));
   }
 
   /**
@@ -158,6 +158,6 @@ public class RobotContainer {
     // Run path following command, then stop at the end.
     return swerveControllerCommand.andThen(() -> m_robotDrive.drive(0, 0, 0, false));
     // An example command will be run in autonomous
-    //return autoChooser.getSelected();
+    //Xreturn autoChooser.getSelected();
   }
 }
