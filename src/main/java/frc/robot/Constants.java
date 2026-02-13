@@ -24,14 +24,15 @@ import edu.wpi.first.math.util.Units;
 public final class Constants {
   public static final class DriveConstants {
     // Motor controller IDs for drivetrain motors
-    public static final int LEFT_LEADER_ID = 1;
-    public static final int LEFT_FOLLOWER_ID = 2;
-    public static final int RIGHT_LEADER_ID = 3;
-    public static final int RIGHT_FOLLOWER_ID = 4;
-    public static final int BACK_LEFT_LEADER_ID = 5;
-    public static final int BACK_LEFT_FOLLOWER_ID = 6;
-    public static final int BACK_RIGHT_LEADER_ID = 7;
-    public static final int BACK_RIGHT_FOLLOWER_ID = 8;
+    //public static final int LEFT_LEADER_ID = 8;
+    //public static final int LEFT_FOLLOWER_ID = 6;
+    //public static final int RIGHT_LEADER_ID = 2;
+    //public static final int RIGHT_FOLLOWER_ID = 4;
+    ;
+    //public static final int BACK_LEFT_LEADER_ID = 7;
+    //public static final int BACK_LEFT_FOLLOWER_ID = 5;
+    //public static final int BACK_RIGHT_LEADER_ID = 1;
+    //public static final int BACK_RIGHT_FOLLOWER_ID = 3;
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
     public static final double kMaxSpeedMetersPerSecond = 4.8;
@@ -59,22 +60,24 @@ public final class Constants {
     public static final double kBackRightChassisAngularOffset = Math.PI / 2;
 
     // SPARK MAX CAN IDs
-    public static final int kFrontLeftDrivingCanId = 11;
-    public static final int kRearLeftDrivingCanId = 13;
-    public static final int kFrontRightDrivingCanId = 15;
-    public static final int kRearRightDrivingCanId = 17;
+    public static final int kFrontLeftDrivngCanId = 8;
+    public static final int kRearLeftDrivingCanId = 6;
+    public static final int kFrontRightDrivingCanId = 2;
+    public static final int kRearRightDrivingCanId = 4;
 
-    public static final int kFrontLeftTurningCanId = 10;
-    public static final int kRearLeftTurningCanId = 12;
-    public static final int kFrontRightTurningCanId = 14;
-    public static final int kRearRightTurningCanId = 16;
+    public static final int kFrontLeftTurningCanId = 7;
+    public static final int kRearLeftTurningCanId = 5;
+    public static final int kFrontRightTurningCanId = 1;
+    public static final int kRearRightTurningCanId = 3;
 
     public static final boolean kGyroReversed = false;
   }
+
+  
 public static final class FuelConstants {
     // Motor controller IDs for Fuel Mechanism motors
-    public static final int FEEDER_MOTOR_ID = 6;
-    public static final int INTAKE_LAUNCHER_MOTOR_ID = 5;
+    public static final int FEEDER_MOTOR_ID = 9;
+    public static final int INTAKE_LAUNCHER_MOTOR_ID = 10;
 
     // Current limit and nominal voltage for fuel mechanism motors.
     public static final int FEEDER_MOTOR_CURRENT_LIMIT = 60;
@@ -90,6 +93,7 @@ public static final class FuelConstants {
     public static final double SPIN_UP_FEEDER_VOLTAGE = -6;
     public static final double SPIN_UP_SECONDS = 1;
   }
+  
   public static final class ModuleConstants {
     // The MAXSwerve module can be configured with one of three pinion gears: 12T,
     // 13T, or 14T. This changes the drive speed of the module (a pinion gear with
@@ -106,6 +110,7 @@ public static final class FuelConstants {
     public static final double kDriveWheelFreeSpeedRps = (kDrivingMotorFreeSpeedRps * kWheelCircumferenceMeters)
         / kDrivingMotorReduction;
   }
+
 
   public static final class OIConstants {
     public static final int kDriverControllerPort = 0;
