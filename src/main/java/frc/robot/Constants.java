@@ -23,22 +23,13 @@ import edu.wpi.first.math.util.Units;
  */
 public final class Constants {
   public static final class DriveConstants {
-    // Motor controller IDs for drivetrain motors
-    //public static final int LEFT_LEADER_ID = 8;
-    //public static final int LEFT_FOLLOWER_ID = 6;
-    //public static final int RIGHT_LEADER_ID = 2;
-    //public static final int RIGHT_FOLLOWER_ID = 4;
-    ;
-    //public static final int BACK_LEFT_LEADER_ID = 7;
-    //public static final int BACK_LEFT_FOLLOWER_ID = 5;
-    //public static final int BACK_RIGHT_LEADER_ID = 1;
-    //public static final int BACK_RIGHT_FOLLOWER_ID = 3;1
+  
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
     public static final double kMaxSpeedMetersPerSecond = 2.4;
     public static final double kMaxAngularSpeed = 1 * Math.PI; // radians per second
 
-      // Current limit for drivetrain motors. 60A is a r  easonable maximum to reduce
+      // Current limit for drivetrain motors. 60A is a reasonable maximum to reduce
     // likelihood of tripping breakers or damaging CIM motors
     public static final int DRIVE_MOTOR_CURRENT_LIMIT = 60;
 
