@@ -142,13 +142,13 @@ public static final class FuelConstants {
   public static final class OIConstants {
     public static final int kDriverControllerPort = 0;
 
-    public static final double kDriveDeadband = 0.15;
+    public static final double kDriveDeadband = 0.25;
   }
 
-
+ 
   public static final class AutoConstants {
-    public static final double kMaxSpeedMetersPerSecond = 1;
-    public static final double kMaxAccelerationMetersPerSecondSquared = 0.5;
+    public static final double kMaxSpeedMetersPerSecond = 3;
+    public static final double kMaxAccelerationMetersPerSecondSquared = 1;
     public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
     public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI;
 
@@ -169,7 +169,7 @@ public static final class FuelConstants {
 
     // This value is multiplied by the joystick value when driving the robot to
     // help avoid driving and turning too fast and being difficult to control
-    public static final double DRIVE_SCALING = .1;
+    public static final double DRIVE_SCALING = .03;
     public static final double ROTATION_SCALING = .1;
   }
   public static final class NeoMotorConstants {
