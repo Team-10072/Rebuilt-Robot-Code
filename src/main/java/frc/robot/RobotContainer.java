@@ -137,7 +137,7 @@ public class RobotContainer {
         List.of(),
 
         // End 3 meters straight ahead of where we started, facing forward
-        new Pose2d(5, 0, new Rotation2d(0)),
+        new Pose2d(2, 0, new Rotation2d(0)),
         config);
 
     var thetaController = new ProfiledPIDController(
