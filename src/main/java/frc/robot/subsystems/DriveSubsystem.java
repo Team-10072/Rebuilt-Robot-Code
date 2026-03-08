@@ -111,9 +111,9 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public void drive(double xSpeed, double ySpeed, double rot, boolean fieldRelative) {
     // Convert the commanded speeds into the correct units for the drivetrain
-    double xSpeedDelivered = xSpeed * DriveConstants.kMaxSpeedMetersPerSecond;
-    double ySpeedDelivered = ySpeed * DriveConstants.kMaxSpeedMetersPerSecond;
-    double rotDelivered = rot * DriveConstants.kMaxAngularSpeed;
+    double xSpeedDelivered = (xSpeed * DriveConstants.kMaxSpeedMetersPerSecond) / 1.5;
+    double ySpeedDelivered = (ySpeed * DriveConstants.kMaxSpeedMetersPerSecond) / 1.5;
+    double rotDelivered = (rot * DriveConstants.kMaxAngularSpeed) / 1.5;
 
     var swerveModuleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(
         fieldRelative
