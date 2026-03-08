@@ -169,8 +169,8 @@ public static final class FuelConstants {
 
     // This value is multiplied by the joystick value when driving the robot to
     // help avoid driving and turning too fast and being difficult to control
-    public static final double DRIVE_SCALING = .03;
-    public static final double ROTATION_SCALING = .1;
+    public static final double DRIVE_SCALING = .02;
+    public static final double ROTATION_SCALING = .05;
   }
   public static final class NeoMotorConstants {
     public static final double kFreeSpeedRpm = 5676;
