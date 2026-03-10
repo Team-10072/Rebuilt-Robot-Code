@@ -64,6 +64,7 @@ public final class Constants {
     public static final boolean kGyroReversed = false;
   }
 
+//Lowkey be wary of these constants
   public static class LimelightConstants{
     public static final int pipeNu_megatag = 0;
     public static final int pipeNu_node18_april = 1 ;
@@ -167,10 +168,9 @@ public static final class FuelConstants {
     public static final int DRIVER_CONTROLLER_PORT = 0;
     public static final int OPERATOR_CONTROLLER_PORT = 1;
 
-    // This value is multiplied by the joystick value when driving the robot to
-    // help avoid driving and turning too fast and being difficult to control
-    public static final double DRIVE_SCALING = .02;
-    public static final double ROTATION_SCALING = .05;
+    // DONT USE FOR TANK DRIVE IN KITBOT
+   // public static final double DRIVE_SCALING = .02;
+    //public static final double ROTATION_SCALING = .05;
   }
   public static final class NeoMotorConstants {
     public static final double kFreeSpeedRpm = 5676;
