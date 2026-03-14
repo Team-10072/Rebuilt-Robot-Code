@@ -27,13 +27,15 @@ import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 //import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import java.util.List;
-//import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 //import edu.wpi.first.wpilibj2.command.button.Trigger;
 import static frc.robot.Constants.OperatorConstants.*;
 //import frc.robot.commands.Drive;
 import frc.robot.commands.Eject;
 //import frc.robot.commands.ExampleAuto;
+import frc.robot.commands.MainAutonomous;
+import frc.robot.commands.ForwardDrive;
 import frc.robot.commands.Intake;
 import frc.robot.commands.LaunchSequence;
 //import frc.robot.subsystems.CANDriveSubsystem;
@@ -55,13 +57,18 @@ public class RobotContainer {
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
 //Xprivate final CommandXboxController driverController = new CommandXboxController(DRIVER_CONTROLLER_PORT);
  private final CommandXboxController operatorController = new CommandXboxController(OPERATOR_CONTROLLER_PORT);
-//Xprivate final SendableChooser<Command> autoChooser = new SendableChooser<>();
+private final SendableChooser<Command> autoChooser = new SendableChooser<>();
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+
+    // Set the options to show up in the Dashboard for selecting auto modes. If you
+    // add additional auto modes you can add additional lines here with
+    // autoChooser.addOption
+    autoChooser.setDefaultOption("Autonomous", new MainAutonomous(m_robotDrive, fuelSubsystem));
 
     // Configure default commands
     m_robotDrive.setDefaultCommand(
@@ -120,48 +127,49 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
+ // public Command getAutonomousCommand() {
     // Create config for trajectory
-    TrajectoryConfig config = new TrajectoryConfig(
-        AutoConstants.kMaxSpeedMetersPerSecond,
-        AutoConstants.kMaxAccelerationMetersPerSecondSquared)
+   // TrajectoryConfig config = new TrajectoryConfig(
+     //   AutoConstants.kMaxSpeedMetersPerSecond,
+      //  AutoConstants.kMaxAccelerationMetersPerSecondSquared)
         // Add kinematics to ensure max speed is actually obeyed
-        .setKinematics(DriveConstants.kDriveKinematics);
+       // .setKinematics(DriveConstants.kDriveKinematics);
 
     // An example trajectory to follow. All units in meters.
-    Trajectory exampleTrajectory = TrajectoryGenerator.generateTrajectory(
+    //Trajectory exampleTrajectory = TrajectoryGenerator.generateTrajectory(
         // Start at the origin facing the +X direction
-        new Pose2d(0, 0, new Rotation2d(0)),
+      //  new Pose2d(0, 0, new Rotation2d(0)),
         // Pass through these two interior waypoints, making an 's' curve path
 
-        List.of(),
+       // List.of(),
 
         // End 3 meters straight ahead of where we started, facing forward
-        new Pose2d(2, 0, new Rotation2d(0)),
-        config);
+        //new Pose2d(2, 0, new Rotation2d(0)),
+        //config);
 
-    var thetaController = new ProfiledPIDController(
-       AutoConstants.kPThetaController, 0, 0, AutoConstants.kThetaControllerConstraints);
-    thetaController.enableContinuousInput(-Math.PI, Math.PI);
+    //var thetaController = new ProfiledPIDController(
+     //  AutoConstants.kPThetaController, 0, 0, AutoConstants.kThetaControllerConstraints);
+    //thetaController.enableContinuousInput(-Math.PI, Math.PI);
 
-    SwerveControllerCommand swerveControllerCommand = new SwerveControllerCommand(
-        exampleTrajectory,
-        m_robotDrive::getPose, // Functional interface to feed supplier
-        DriveConstants.kDriveKinematics,
+    //SwerveControllerCommand swerveControllerCommand = new SwerveControllerCommand(
+    //    exampleTrajectory,
+      //  m_robotDrive::getPose, // Functional interface to feed supplier
+        //DriveConstants.kDriveKinematics,
 
         // Position controllers
-        new PIDController(AutoConstants.kPXController, 0, 0),
-        new PIDController(AutoConstants.kPYController, 0, 0),
-        thetaController,
-        m_robotDrive::setModuleStates,
-        m_robotDrive);
+        //new PIDController(AutoConstants.kPXController, 0, 0),
+        //new PIDController(AutoConstants.kPYController, 0, 0),
+        //thetaController,
+        //m_robotDrive::setModuleStates,
+        //m_robotDrive);
 
     // Reset odometry to the starting pose of the trajectory.
-    m_robotDrive.resetOdometry(exampleTrajectory.getInitialPose());
+    //m_robotDrive.resetOdometry(exampleTrajectory.getInitialPose());
 
     // Run path following command, then stop at the end.
-    return swerveControllerCommand.andThen(() -> m_robotDrive.drive(0, 0, 0, false));
+    //return swerveControllerCommand.andThen(() -> m_robotDrive.drive(0, 0, 0, false));
     // An example command will be run in autonomous
-    //Xreturn autoChooser.getSelected();
-  }
+    public Command getAutonomousCommand() {
+      return autoChooser.getSelected();
+   }
 }
