@@ -5,39 +5,40 @@
 package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.controller.ProfiledPIDController;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
+//import edu.wpi.first.math.controller.PIDController;
+//import edu.wpi.first.math.controller.ProfiledPIDController;
+//mport edu.wpi.first.math.geometry.Pose2d;
+//import edu.wpi.first.math.geometry.Rotation2d;
 //import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.math.trajectory.Trajectory;
-import edu.wpi.first.math.trajectory.TrajectoryConfig;
-import edu.wpi.first.math.trajectory.TrajectoryGenerator;
+//import edu.wpi.first.math.trajectory.Trajectory;
+//import edu.wpi.first.math.trajectory.TrajectoryConfig;
+//import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.XboxController;
 //import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
-import frc.robot.Constants.AutoConstants;
-import frc.robot.Constants.DriveConstants;
+//import frc.robot.Constants.AutoConstants;
+//import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
-import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
+//import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 //import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import java.util.List;
+//import java.util.List;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 //import edu.wpi.first.wpilibj2.command.button.Trigger;
 import static frc.robot.Constants.OperatorConstants.*;
 //import frc.robot.commands.Drive;
 import frc.robot.commands.Eject;
-//import frc.robot.commands.ExampleAuto;
-import frc.robot.commands.MainAutonomous;
-import frc.robot.commands.ForwardDrive;
+//import frc.robot.commands.moving.ForwardDrive;
 import frc.robot.commands.Intake;
 import frc.robot.commands.LaunchSequence;
+import frc.robot.commands.MainAutos.MiddleAuto;
+import frc.robot.commands.MainAutos.RightAuto;
+import frc.robot.commands.MainAutos.LeftAuto;
 //import frc.robot.subsystems.CANDriveSubsystem;
 import frc.robot.subsystems.CANFuelSubsystem;
 
@@ -55,7 +56,7 @@ public class RobotContainer {
 
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
-//Xprivate final CommandXboxController driverController = new CommandXboxController(DRIVER_CONTROLLER_PORT);
+ //private final CommandXboxController driverController = new CommandXboxController(DRIVER_CONTROLLER_PORT);
  private final CommandXboxController operatorController = new CommandXboxController(OPERATOR_CONTROLLER_PORT);
 private final SendableChooser<Command> autoChooser = new SendableChooser<>();
   /**
@@ -68,7 +69,9 @@ private final SendableChooser<Command> autoChooser = new SendableChooser<>();
     // Set the options to show up in the Dashboard for selecting auto modes. If you
     // add additional auto modes you can add additional lines here with
     // autoChooser.addOption
-    autoChooser.setDefaultOption("Autonomous", new MainAutonomous(m_robotDrive, fuelSubsystem));
+    autoChooser.setDefaultOption("MiddleAuto", new MiddleAuto(m_robotDrive, fuelSubsystem));
+    autoChooser.addOption("RightAuto", new RightAuto(m_robotDrive, fuelSubsystem));
+    autoChooser.addOption("LeftAuto", new LeftAuto(m_robotDrive, fuelSubsystem));
 
     // Configure default commands
     m_robotDrive.setDefaultCommand(
