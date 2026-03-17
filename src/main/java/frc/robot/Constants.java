@@ -23,15 +23,20 @@ import edu.wpi.first.math.util.Units;
  */
 public final class Constants {
   public static final class DriveConstants {
+  
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
-    public static final double kMaxSpeedMetersPerSecond = 4.8;
-    public static final double kMaxAngularSpeed = 2 * Math.PI; // radians per second
+    public static final double kMaxSpeedMetersPerSecond = 2.4;
+    public static final double kMaxAngularSpeed = 1 * Math.PI; // radians per second
+
+      // Current limit for drivetrain motors. 60A is a reasonable maximum to reduce
+    // likelihood of tripping breakers or damaging CIM motors
+    public static final int DRIVE_MOTOR_CURRENT_LIMIT = 50;
 
     // Chassis configuration
-    public static final double kTrackWidth = Units.inchesToMeters(26.5);
+    public static final double kTrackWidth = Units.inchesToMeters(20);
     // Distance between centers of right and left wheels on robot
-    public static final double kWheelBase = Units.inchesToMeters(26.5);
+    public static final double kWheelBase = Units.inchesToMeters(25);
     // Distance between front and back wheels on robot
     public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
         new Translation2d(kWheelBase / 2, kTrackWidth / 2),
@@ -46,19 +51,77 @@ public final class Constants {
     public static final double kBackRightChassisAngularOffset = Math.PI / 2;
 
     // SPARK MAX CAN IDs
-    public static final int kFrontLeftDrivingCanId = 11;
-    public static final int kRearLeftDrivingCanId = 13;
-    public static final int kFrontRightDrivingCanId = 15;
-    public static final int kRearRightDrivingCanId = 17;
+    public static final int kFrontLeftDrivngCanId = 2;
+    public static final int kRearLeftDrivingCanId = 6;
+    public static final int kFrontRightDrivingCanId = 4;
+    public static final int kRearRightDrivingCanId = 8;
 
-    public static final int kFrontLeftTurningCanId = 10;
-    public static final int kRearLeftTurningCanId = 12;
-    public static final int kFrontRightTurningCanId = 14;
-    public static final int kRearRightTurningCanId = 16;
+    public static final int kFrontLeftTurningCanId = 1;
+    public static final int kRearLeftTurningCanId = 5;
+    public static final int kFrontRightTurningCanId = 3;
+    public static final int kRearRightTurningCanId = 7;
 
     public static final boolean kGyroReversed = false;
   }
 
+//Lowkey be wary of these constants
+  public static class LimelightConstants{
+    public static final int pipeNu_megatag = 0;
+    public static final int pipeNu_node18_april = 1 ;
+    public static final int pipeNu_node27_april = 2 ;
+    public static final int pipeNu_node36_april = 3 ;
+    public static final int pipeNu_hp45_april = 4;
+    public static final int pipeNu_lower_reflective = 5;
+    public static final int pipeNu_higher_reflective = 6;
+    public static final int pipeNu_normal = 7;
+    public static final double higher_reflective_heightCm = 111.0;
+    public static final double lower_reflective_heightCm = 61.0;
+    public static final double node_april_heightCm = 46.0;
+    public static final double hp_april_heightCm = 69.0;
+    public static final double limelightMountAngleDegrees = -19.5;
+    public static final double limelightLensHeightCm = 107.0;
+
+  }
+
+  /* Drive Motor PID Values Limelight */
+    public static final double LLdriveKP = 0.15;
+    public static final double LLdriveKI = 0.0;
+    public static final double LLdriveKD = 0.0;
+    public static final double LLdriveKFF = 0.05;
+
+    /* Strafe Motor PID Values Limelight */
+    public static final double LLstrafeKP = 0.15;
+    public static final double LLstrafeKI = 0.0;
+    public static final double LLstrafeKD = 0.0;
+    public static final double LLstrafeKFF = 0.05;
+
+    /* Angle Motor PID Values Limelight */
+    public static final double LLangleKP = 0.02;
+    public static final double LLangleKI = 0.0;
+    public static final double LLangleKD = 0.001;
+    public static final double LLangleKFF = 0.01;
+
+  
+public static final class FuelConstants {
+    // Motor controller IDs for Fuel Mechanism motors
+    public static final int FEEDER_MOTOR_ID = 10;
+    public static final int INTAKE_LAUNCHER_MOTOR_ID = 9;
+
+    // Current limit and nominal voltage for fuel mechanism motors.
+    public static final int FEEDER_MOTOR_CURRENT_LIMIT = 50;
+    public static final int LAUNCHER_MOTOR_CURRENT_LIMIT = 50;
+
+    // Voltage values for various fuel operations. These values may need to be tuned
+    // based on exact robot construction.
+    // See the Software Guide for tuning information
+    public static final double INTAKING_FEEDER_VOLTAGE = -12;
+    public static final double INTAKING_INTAKE_VOLTAGE = 10;
+    public static final double LAUNCHING_FEEDER_VOLTAGE = 9;
+    public static final double LAUNCHING_LAUNCHER_VOLTAGE = 10.6;
+    public static final double SPIN_UP_FEEDER_VOLTAGE = -6;
+    public static final double SPIN_UP_SECONDS = 1;
+  }
+  
   public static final class ModuleConstants {
     // The MAXSwerve module can be configured with one of three pinion gears: 12T,
     // 13T, or 14T. This changes the drive speed of the module (a pinion gear with
@@ -76,14 +139,17 @@ public final class Constants {
         / kDrivingMotorReduction;
   }
 
+
   public static final class OIConstants {
     public static final int kDriverControllerPort = 0;
-    public static final double kDriveDeadband = 0.05;
+
+    public static final double kDriveDeadband = 0.08;
   }
 
+ 
   public static final class AutoConstants {
     public static final double kMaxSpeedMetersPerSecond = 3;
-    public static final double kMaxAccelerationMetersPerSecondSquared = 3;
+    public static final double kMaxAccelerationMetersPerSecondSquared = 1;
     public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
     public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI;
 
@@ -96,7 +162,18 @@ public final class Constants {
         kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
   }
 
+  public static final class OperatorConstants {
+    // Port constants for driver and operator controllers. These should match the
+    // values in the Joystick tab of the Driver Station software
+    public static final int DRIVER_CONTROLLER_PORT = 0;
+    public static final int OPERATOR_CONTROLLER_PORT = 1;
+
+    // DONT USE FOR TANK DRIVE IN KITBOT
+   // public static final double DRIVE_SCALING = .02;
+    //public static final double ROTATION_SCALING = .05;
+  }
   public static final class NeoMotorConstants {
     public static final double kFreeSpeedRpm = 5676;
   }
+
 }
