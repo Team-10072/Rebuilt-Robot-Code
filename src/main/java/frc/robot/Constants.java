@@ -143,7 +143,7 @@ public static final class FuelConstants {
   public static final class OIConstants {
     public static final int kDriverControllerPort = 0;
 
-    public static final double kDriveDeadband = 0.09;
+    public static final double kDriveDeadband = 0.07;
   }
 
  
